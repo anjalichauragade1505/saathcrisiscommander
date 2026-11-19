@@ -79,7 +79,10 @@ def _rule_based_fallback(population_moved, shelter_capacity):
 
 
 def run_inference_agent(zone, disaster_type, population_moved, severity_label):
-    client = get_client()
+        try:
+           client = get_client()
+        except Exception:
+           client = None
     inputs = {
         "disaster_type": disaster_type,
         "zone_name": zone.name,
